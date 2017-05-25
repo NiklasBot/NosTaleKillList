@@ -25,8 +25,9 @@ namespace NosTaleKillList.Models
         public string Beschreibung { get; set; }
         public string FamDK { get; set; }
         public string Datum { get; set; }
+        public string Priorität { get; set; }
 
-        public Feind(string charaktername, string beruf, string level, string familie, string beschreibung, string famdk, string datum)
+        public Feind(string charaktername, string beruf, string level, string familie, string beschreibung, string famdk, string datum, string priorität)
         {
             CharakterName = charaktername;
             Beruf = beruf;
@@ -35,6 +36,7 @@ namespace NosTaleKillList.Models
             Beschreibung = beschreibung;
             FamDK = famdk;
             Datum = datum;
+            Priorität = priorität;
         }
 
         public bool Save()

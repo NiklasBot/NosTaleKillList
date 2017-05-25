@@ -28,6 +28,7 @@ namespace NosTaleKillList
         internal string FamDK { get; private set; }
 
         internal string Datum { get; private set; }
+        internal string Priorität { get; private set; }
 
         internal bool Erfolg { get; private set; }
 
@@ -78,6 +79,7 @@ namespace NosTaleKillList
                 Familie = tb_Familie.Text;
                 Beschreibung = tb_Beschreibung.Text;
                 Datum = tb_Datum.Text;
+                Priorität = cb_Priorität.Text;
                 Erfolg = true;
 
                 if (cb_FamDK.IsChecked == true)
@@ -93,7 +95,7 @@ namespace NosTaleKillList
 
             if (Erfolg)
             {
-                var h = new Feind(CharakterName, Beruf, Level, Familie, Beschreibung, FamDK, Datum);
+                var h = new Feind(CharakterName, Beruf, Level, Familie, Beschreibung, FamDK, Datum, Priorität);
                 if (h.Save())
                 {
                     MainViewModel.Feinde.Add(h);

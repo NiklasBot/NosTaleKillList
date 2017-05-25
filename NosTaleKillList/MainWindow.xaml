@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NosTaleKillList"
-        mc:Ignorable="d" Height="720" Width="1280" MinHeight="720" MinWidth="1280" MaxHeight="720" MaxWidth="1280" Background="LightGray" Title="NosTale EarlyAccess 1.00.023" ResizeMode="CanMinimize">
+        mc:Ignorable="d" Height="720" Width="1580" MinHeight="720" MinWidth="1580" MaxHeight="720" MaxWidth="1580" Background="LightGray" Title="NosTale EarlyAccess 1.00.023" ResizeMode="CanMinimize" WindowStyle="ThreeDBorderWindow">
     <Grid Margin="10">
         <Grid>
             <Grid.RowDefinitions>
@@ -28,12 +28,14 @@
                           CanUserAddRows="True"
                           ItemsSource="{Binding Feinde, Mode=TwoWay}"
                           GridLinesVisibility="None">
+
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="CharakterName" Width="160" Binding="{Binding Path=CharakterName}" CanUserResize="False"/>
-                        <DataGridTextColumn Header="Beruf" Width="160" Binding="{Binding Path=Beruf}" CanUserResize="False"/>
-                        <DataGridTextColumn Header="Level" Width="100" Binding="{Binding Path=Level}" CanUserResize="False"/>
-                        <DataGridTextColumn Header="Familie" Width="160" Binding="{Binding Path=Familie}" CanUserResize="False"/>
-                        <DataGridTextColumn Header="FamDK" Width="50" Binding="{Binding Path=FamDK}" CanUserResize="False"/>
+                        <DataGridTextColumn Header="CharakterName" Width="150" Binding="{Binding Path=CharakterName}" CanUserResize="False"/>
+                        <DataGridTextColumn Header="Beruf" Width="150" Binding="{Binding Path=Beruf}" CanUserResize="False"/>
+                        <DataGridTextColumn Header="Level" Width="150" Binding="{Binding Path=Level}" CanUserResize="False"/>
+                        <DataGridTextColumn Header="Familie" Width="150" Binding="{Binding Path=Familie}" CanUserResize="False"/>
+                        <DataGridTextColumn Header="FamDK" Width="150" Binding="{Binding Path=FamDK}" CanUserResize="False"/>
+                        <DataGridTextColumn Header="Priorität" Width="150" Binding="{Binding Path=Priorität}" CanUserResize="False"/>
                         <DataGridTemplateColumn Header="Beschreibung" MinWidth="210" MaxWidth="210" CanUserResize="False">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
@@ -49,45 +51,48 @@
                         <DataGridTextColumn Header="Datum" Width="130" Binding="{Binding Path=Datum}" CanUserResize="False" IsReadOnly="True"/>
                     </DataGrid.Columns>
                 </DataGrid>
-                <Grid Grid.Column="2" Background="White">
+                <Grid Background="White" Grid.Column="2" >
                     <StackPanel Margin="10">
-                        <Label x:Name="lb_Beruf" Content="Typ:" ToolTip="Schwertkämpfer, Bogenschütze, Magier"/>
-                        <ComboBox x:Name="cb_Beruf">
-                            <ComboBoxItem IsSelected="True" Content="Schwertkämpfer"/>
-                            <ComboBoxItem Content="Bogenschütze"/>
-                            <ComboBoxItem Content="Magier"/>
-                            <ComboBoxItem Content="Abenteurer"/>
+                            <Label x:Name="lb_Beruf" Content="Typ:" ToolTip="Schwertkämpfer, Bogenschütze, Magier und Abenteurer"/>
+                            <ComboBox x:Name="cb_Beruf">
+                                <ComboBoxItem IsSelected="True" Content="Schwertkämpfer"/>
+                                <ComboBoxItem Content="Bogenschütze"/>
+                                <ComboBoxItem Content="Magier"/>
+                                <ComboBoxItem Content="Abenteurer"/>
+                            </ComboBox>
+                        <Label></Label>
+                        <Label x:Name="lb_Priorität" Content="Priorität:" ToolTip="Hoch, Mittel, Niedrig"/>
+                        <ComboBox x:Name="cb_Priorität">
+                            <ComboBoxItem IsSelected="True" Content="Hoch"/>
+                            <ComboBoxItem Content="Mittel"/>
+                            <ComboBoxItem Content="Niedrig"/>
                         </ComboBox>
                         <Label></Label>
-                        <Label></Label>
-                        <Label></Label>
-                        <Label></Label>
-                        <Label></Label>
-                        <Label></Label>
-                        <Label></Label>
-                        <Label x:Name="lb_CharakterName" Content="CharakterName:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                        <TextBox x:Name="tb_CharakterName" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="230" BorderBrush="Gray"/>
-                        <Label></Label>
-                        <Label x:Name="lb_Level" Content="Level:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                        <TextBox x:Name="tb_Level" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="230" BorderBrush="Gray"/>
-                        <Label></Label>
-                        <Label x:Name="lb_Familie" Content="Familie:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                        <TextBox x:Name="tb_Familie" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="230" BorderBrush="Gray"/>
-                        <Label></Label>
-                        <Label x:Name="lb_FamDK" Content="FamDK:" ToolTip="Ja oder Nein"/>
-                        <CheckBox x:Name="cb_FamDK" HorizontalAlignment="Center" />
-                        <Label></Label>
-                        <Label x:Name="lb_Beschreibung" Content="Beschreibung:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                        <TextBox x:Name="tb_Beschreibung" HorizontalAlignment="Left" Height="92" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="230" BorderBrush="Gray"/>
-                        <Label></Label>
-                        <Label x:Name="lb_Datum" Content="Datum:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                        <TextBox x:Name="tb_Datum" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="230" BorderBrush="Gray" IsReadOnly="True"/>
-                        <Label></Label>
-                        <Label></Label>
-                        <Button x:Name="btn_Hinzufügen" Content="Hinzufügen" Click="btn_Hinzufügen_Click"/>
-                        <Label></Label>
-                        <Button x:Name="btn_Löschen" Content="Löschen" Click="btn_Löschen_Click"/>
-                    </StackPanel>
+                            <Label></Label>
+                            <Label></Label>
+                            <Label x:Name="lb_CharakterName" Content="CharakterName:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                            <TextBox x:Name="tb_CharakterName" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="230" BorderBrush="Gray"/>
+                            <Label></Label>
+                            <Label  x:Name="lb_Level" Content="Level:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                            <TextBox x:Name="tb_Level" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="230" BorderBrush="Gray"/>
+                            <Label></Label>
+                            <Label x:Name="lb_Familie" Content="Familie:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                            <TextBox x:Name="tb_Familie" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="230" BorderBrush="Gray"/>
+                            <Label></Label>
+                            <Label x:Name="lb_FamDK" Content="FamDK:" ToolTip="Ja oder Nein"/>
+                            <CheckBox x:Name="cb_FamDK" HorizontalAlignment="Center" />
+                            <Label></Label>
+                            <Label x:Name="lb_Beschreibung" Content="Beschreibung:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                            <TextBox x:Name="tb_Beschreibung" HorizontalAlignment="Left" Height="92" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="230" BorderBrush="Gray"/>
+                            <Label></Label>
+                            <Label x:Name="lb_Datum" Content="Datum:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                            <TextBox x:Name="tb_Datum" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="230" BorderBrush="Gray" IsReadOnly="True"/>
+                            <Label></Label>
+                            <Label></Label>
+                            <Button x:Name="btn_Hinzufügen" Content="Hinzufügen" Click="btn_Hinzufügen_Click"/>
+                            <Label></Label>
+                            <Button x:Name="btn_Löschen" Content="Löschen" Click="btn_Löschen_Click"/>
+                        </StackPanel>
                 </Grid>
             </Grid>
         </Grid>
