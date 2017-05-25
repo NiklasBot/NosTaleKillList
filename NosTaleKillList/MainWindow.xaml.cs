@@ -27,6 +27,8 @@ namespace NosTaleKillList
         internal string Beschreibung { get; private set; }
         internal string FamDK { get; private set; }
 
+        internal string Datum { get; private set; }
+
         internal bool Erfolg { get; private set; }
 
         public MainWindow()
@@ -36,6 +38,9 @@ namespace NosTaleKillList
 
             MainViewModel = new MainViewModel();
             DataContext = MainViewModel;
+
+            DateTime date = DateTime.Today;
+            tb_Datum.Text = date.ToShortDateString();
 
             Aktualisieren();
         }
@@ -72,6 +77,7 @@ namespace NosTaleKillList
                 Level = tb_Level.Text;
                 Familie = tb_Familie.Text;
                 Beschreibung = tb_Beschreibung.Text;
+                Datum = tb_Datum.Text;
                 Erfolg = true;
 
                 if (cb_FamDK.IsChecked == true)
@@ -87,7 +93,7 @@ namespace NosTaleKillList
 
             if (Erfolg)
             {
-                var h = new Feind(CharakterName, Beruf, Level, Familie, Beschreibung, FamDK);
+                var h = new Feind(CharakterName, Beruf, Level, Familie, Beschreibung, FamDK, Datum);
                 if (h.Save())
                 {
                     MainViewModel.Feinde.Add(h);

@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NosTaleKillList"
-        mc:Ignorable="d" Height="720" Width="1280" MinHeight="720" MinWidth="1280" MaxHeight="720" MaxWidth="1280" Background="LightGray" Title="NosTale EarlyAccess 1.00.000" ResizeMode="CanMinimize">
+        mc:Ignorable="d" Height="720" Width="1280" MinHeight="720" MinWidth="1280" MaxHeight="720" MaxWidth="1280" Background="LightGray" Title="NosTale EarlyAccess 1.00.023" ResizeMode="CanMinimize">
     <Grid Margin="10">
         <Grid>
             <Grid.RowDefinitions>
@@ -31,10 +31,10 @@
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="CharakterName" Width="160" Binding="{Binding Path=CharakterName}" CanUserResize="False"/>
                         <DataGridTextColumn Header="Beruf" Width="160" Binding="{Binding Path=Beruf}" CanUserResize="False"/>
-                        <DataGridTextColumn Header="Level" Width="160" Binding="{Binding Path=Level}" CanUserResize="False"/>
+                        <DataGridTextColumn Header="Level" Width="100" Binding="{Binding Path=Level}" CanUserResize="False"/>
                         <DataGridTextColumn Header="Familie" Width="160" Binding="{Binding Path=Familie}" CanUserResize="False"/>
                         <DataGridTextColumn Header="FamDK" Width="50" Binding="{Binding Path=FamDK}" CanUserResize="False"/>
-                        <DataGridTemplateColumn Header="Beschreibung" MinWidth="280" MaxWidth="280" CanUserResize="False">
+                        <DataGridTemplateColumn Header="Beschreibung" MinWidth="210" MaxWidth="210" CanUserResize="False">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock Name="tb_Beschreibung" Text="{Binding Path=Beschreibung}" TextWrapping="WrapWithOverflow" ToolTip="{Binding ElementName=tb_Beschreibung, Path=Text}" />
@@ -46,6 +46,7 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellEditingTemplate>
                         </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="Datum" Width="130" Binding="{Binding Path=Datum}" CanUserResize="False" IsReadOnly="True"/>
                     </DataGrid.Columns>
                 </DataGrid>
                 <Grid Grid.Column="2" Background="White">
@@ -78,6 +79,8 @@
                         <Label x:Name="lb_Beschreibung" Content="Beschreibung:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                         <TextBox x:Name="tb_Beschreibung" HorizontalAlignment="Left" Height="92" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="230" BorderBrush="Gray"/>
                         <Label></Label>
+                        <Label x:Name="lb_Datum" Content="Datum:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                        <TextBox x:Name="tb_Datum" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="230" BorderBrush="Gray" IsReadOnly="True"/>
                         <Label></Label>
                         <Label></Label>
                         <Button x:Name="btn_Hinzufügen" Content="Hinzufügen" Click="btn_Hinzufügen_Click"/>
