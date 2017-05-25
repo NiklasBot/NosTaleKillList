@@ -1,0 +1,91 @@
+﻿<Window x:Class="NosTaleKillList.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NosTaleKillList"
+        mc:Ignorable="d" Height="720" Width="1280" MinHeight="720" MinWidth="1280" MaxHeight="720" MaxWidth="1280" Background="LightGray" Title="NosTale EarlyAccess 1.00.000" ResizeMode="CanMinimize">
+    <Grid Margin="10">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="10" />
+                    <ColumnDefinition Width="250" />
+                </Grid.ColumnDefinitions>
+
+                <DataGrid Grid.Column="0" 
+                          x:Name="listView"
+                          SelectionMode="Single"
+                          AutoGenerateColumns="False"
+                          SelectedItem="{Binding SelectedFeind, Mode=TwoWay}"
+                          CanUserDeleteRows="False"
+                          CanUserAddRows="True"
+                          ItemsSource="{Binding Feinde, Mode=TwoWay}"
+                          GridLinesVisibility="None">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="CharakterName" Width="160" Binding="{Binding Path=CharakterName}" CanUserResize="False"/>
+                        <DataGridTextColumn Header="Beruf" Width="160" Binding="{Binding Path=Beruf}" CanUserResize="False"/>
+                        <DataGridTextColumn Header="Level" Width="160" Binding="{Binding Path=Level}" CanUserResize="False"/>
+                        <DataGridTextColumn Header="Familie" Width="160" Binding="{Binding Path=Familie}" CanUserResize="False"/>
+                        <DataGridTextColumn Header="FamDK" Width="50" Binding="{Binding Path=FamDK}" CanUserResize="False"/>
+                        <DataGridTemplateColumn Header="Beschreibung" MinWidth="280" MaxWidth="280" CanUserResize="False">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Name="tb_Beschreibung" Text="{Binding Path=Beschreibung}" TextWrapping="WrapWithOverflow" ToolTip="{Binding ElementName=tb_Beschreibung, Path=Text}" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                            <DataGridTemplateColumn.CellEditingTemplate>
+                                <DataTemplate>
+                                    <TextBox Text="{Binding Path=Beschreibung}" TextWrapping="WrapWithOverflow" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellEditingTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Grid Grid.Column="2" Background="White">
+                    <StackPanel Margin="10">
+                        <Label x:Name="lb_Beruf" Content="Typ:" ToolTip="Schwertkämpfer, Bogenschütze, Magier"/>
+                        <ComboBox x:Name="cb_Beruf">
+                            <ComboBoxItem IsSelected="True" Content="Schwertkämpfer"/>
+                            <ComboBoxItem Content="Bogenschütze"/>
+                            <ComboBoxItem Content="Magier"/>
+                        </ComboBox>
+                        <Label></Label>
+                        <Label></Label>
+                        <Label></Label>
+                        <Label></Label>
+                        <Label></Label>
+                        <Label></Label>
+                        <Label></Label>
+                        <Label x:Name="lb_CharakterName" Content="CharakterName:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                        <TextBox x:Name="tb_CharakterName" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="230" BorderBrush="Gray"/>
+                        <Label></Label>
+                        <Label x:Name="lb_Level" Content="Level:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                        <TextBox x:Name="tb_Level" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="230" BorderBrush="Gray"/>
+                        <Label></Label>
+                        <Label x:Name="lb_Familie" Content="Familie:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                        <TextBox x:Name="tb_Familie" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="230" BorderBrush="Gray"/>
+                        <Label></Label>
+                        <Label x:Name="lb_FamDK" Content="FamDK:" ToolTip="Ja oder Nein"/>
+                        <CheckBox x:Name="cb_FamDK" HorizontalAlignment="Center" />
+                        <Label></Label>
+                        <Label x:Name="lb_Beschreibung" Content="Beschreibung:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                        <TextBox x:Name="tb_Beschreibung" HorizontalAlignment="Left" Height="92" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="230" BorderBrush="Gray"/>
+                        <Label></Label>
+                        <Label></Label>
+                        <Label></Label>
+                        <Button x:Name="btn_Hinzufügen" Content="Hinzufügen" Click="btn_Hinzufügen_Click"/>
+                        <Label></Label>
+                        <Button x:Name="btn_Löschen" Content="Löschen" Click="btn_Löschen_Click"/>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
